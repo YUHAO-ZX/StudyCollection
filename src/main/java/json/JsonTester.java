@@ -13,13 +13,9 @@ public class JsonTester {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(JsonUtil.getString(json2, "a.b[0]"));
-//        System.out.println(System.currentTimeMillis() - start);
-//        System.out.println(JsonUtil.getDate(json, "channelInfo[0].channel_name"));
-//        System.out.println(System.currentTimeMillis() - start);
-//        System.out.println(JsonUtil.getString(json, "channelInfo[0].channel_describe"));
-//        System.out.println(System.currentTimeMillis() - start);
-//        System.out.println(((JSONObject)(JSONObject.parseObject(json).getJSONArray("channelInfo").get(0))).get("channel_id"));
-//        System.out.println(System.currentTimeMillis() - start);
+        System.out.println(JsonUtil.getString(json, "channelInfo[0].upstream_list[0].sourceAddress"));
+        System.out.println(JsonUtil.getString(json, "channelInfo[0].rtmp_downstream_address"));
+        System.out.println(System.currentTimeMillis() - start);
+
     }
 }

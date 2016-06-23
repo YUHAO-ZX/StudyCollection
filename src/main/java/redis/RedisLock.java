@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 /**
  * Created by xinz on 2016/5/31.
  */
-public class Tester {
+public class RedisLock {
 //    public static Jedis jedis = new Jedis("localhost");
     public final static Jedis jedis = RedisOperation.getJedis();
     public static int resource = 0;
