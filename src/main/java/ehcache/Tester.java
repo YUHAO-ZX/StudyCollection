@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class Tester {
     private static Cache productCache = null;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         if(null == productCache){
             ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:cache/cache.xml");
             CacheManager cacheManager = applicationContext.getBean(EhCacheCacheManager.class).getCacheManager();
@@ -39,6 +39,8 @@ public class Tester {
                 value.put("age","21");
                 productCache.put(new Element("zhangxin",value));
             }
+            Thread.sleep(2000);
+
         }
 
 

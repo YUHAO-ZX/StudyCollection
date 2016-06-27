@@ -25,5 +25,8 @@
         <module name="sc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sc" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
