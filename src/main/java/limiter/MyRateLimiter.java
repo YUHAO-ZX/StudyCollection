@@ -20,7 +20,7 @@ public class MyRateLimiter{
         synchronized (mutex()){
             long now = stopwatch.elapsed(TimeUnit.MICROSECONDS);
             if(now > nextTicketMicros){
-                nextTicketMicros += 1000000;
+                nextTicketMicros = now + 1000000;
                 existTicket = limit;
             }
             if(existTicket <= 0){
