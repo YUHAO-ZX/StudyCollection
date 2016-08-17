@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+</head>
+<body>
+
+<div>
+    <p><h1>&nbsp;&nbsp;直播连线信息管理</h1></p><br>
+</div>
+<div>
+    <p class="title">&nbsp;&nbsp;请输入查询条件：</p><br>
+    <form>
+        <p class="title">&nbsp;&nbsp;房间ID：<input class="inputRoomId" type="text" id="roomId1"/><font color="red">*</font></p><br><br>
+        <p class="title">&nbsp;&nbsp;操作人：<input class="inputRoomId" type="text" id="opeartor"/></p><br><br>
+        <p class="title">&nbsp;&nbsp;操作类型：<select id="opCode">
+            <option value="" >ALL</option>
+            <option value="ACCEPT_LINK">接受连线</option>
+            <option value="REFUSE_LINK">拒绝连线</option>
+            <option value="REQUEST_LINK">请求连线</option>
+            <option value="CLOSE_LINK">断开连线</option>
+        </select></p><br>
+        <br>
+        <p>&nbsp;&nbsp;&nbsp;<input class="buttonstyle" id="query" type="button" value="查  询"/>&nbsp;&nbsp;&nbsp;&nbsp;<span id="tip"></span></p><br>
+    </form>
+</div>
+<table class="table table-bordered imagetable" id="test_table">
+    <thead>
+    <tr class="heading">
+        <th width="10%">
+            <h2>roomId</h2>
+        </th>
+        <th width="10%">
+            <h2>操作类型</h2>
+        </th>
+        <th width="20%">
+            <h2>操作人</h2>
+        </th>
+        <th width="20%">
+            <h2>操作时间</h2>
+        </th>
+        <th width="20%">
+            <h2>log</h2>
+        </th>
+    </tr>
+    </thead>
+    <tbody id="body">
+
+    </tbody>
+</table>
+
+<div class="tcdPageCode"></div>
+</body>
+<script>
+
+    var unixtime = new Date(1469546504000).Format("yyyy-MM-dd HH:mm:ss");
+//    unixtime = unixtime.to();
+    alert(unixtime)
+    var unixtime1 = new Date(1469546504000);
+    unixtime1 = unixtime1.toLocaleString()
+    alert(unixtime1)
+
+    var data = '{"action":"","code":0,"data":{"list":[{"actionCode":"REQUEST_LINK","actionId":"19483","gmtCreate":1469523122000,"gmtModify":1469523122000,"id":1,"operateTime":1469523122000,"operatorId":"106735777","result":1},{"actionCode":"REQUEST_LINK","actionId":"19483","gmtCreate":1469523247000,"gmtModify":1469523247000,"id":3,"operateTime":1469523247000,"operatorId":"106735777","result":1}],"size":2},"message":""}';
+    var json=JSON.parse(data);
+    var code = json.code;
+    if(code === 0){
+        var list = json.data.list;
+        var size = list.length;
+        var innerHtml = "";
+        for(var i=0;i<size;i++){
+            innerHtml +='<tr class=\"heading\"> <td width="10%">'+
+            list[i].actionId;
+            +'</td>';
+            innerHtml +='<td width="10%">'+
+            list[i].actionCode;
+            +'</td>';
+            innerHtml +='<td width="20%">'+
+            list[i].operatorId;
+            +'</td>';
+            innerHtml +='<td width="20%">'+
+            list[i].operateTime;
+            +'</td>';
+            innerHtml +='<td width="20%">'+
+            list[i].log;
+            +'</td></tr>';
+        }
+        innerHtml +='</tr>';
+        $("#body").append(innerHtml);
+        $("#tip").html("查询成功,条数："+size);
+    }else{
+        $("#tip").html("获取数据异常,"+data.message);
+    }
+
+    $("#query").bind('click',function (){
+        var roomId = $("#roomId1").val();
+        var opCode = $("#opCode").val();
+        var opeartor = $("#opeartor").val();
+        alert(roomId+" "+opCode+" "+opeartor)
+    })
+</script>
+</html>
