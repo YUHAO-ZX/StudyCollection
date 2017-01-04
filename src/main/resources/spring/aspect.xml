@@ -17,7 +17,10 @@
       http://www.springframework.org/schema/cache
       http://www.springframework.org/schema/cache/spring-cache-4.1.xsd
       ">
-    <bean id="aspectedObject" class="spring.AspectedObject"/>
-    <bean id="springAspect" class="spring.SpringAspect"/>
+    <context:component-scan base-package="spring">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <!--<bean id="aspectedObject" class="spring.AspectedObject"/>-->
+    <!--<bean id="springAspect" class="spring.SpringAspect"/>-->
     <aop:aspectj-autoproxy/>
 </beans>

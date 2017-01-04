@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class RedisOperation {
     //Redis服务器IP
-    private static String ADDR = "127.0.0.1";
+    private static String ADDR = "172.20.16.133";
 
     //Redis的端口号
     private static int PORT = 6379;

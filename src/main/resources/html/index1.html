@@ -1,0 +1,25 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.0/jquery.js"></script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/zclip/1.1.2/jquery.zclip.js"></script>
+</head>
+<body>
+<button class="copy">copy</button>
+</body>
+
+</html>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        alert("fsdfsdfsdf")
+        $(".copy").zclip({
+            path: "./ZeroClipboard.swf",
+            copy: function(){
+                return "sdfsdf";
+            }
+        });
+    });
+
+</script>
