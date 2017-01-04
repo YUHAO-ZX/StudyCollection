@@ -26,14 +26,19 @@ public class RHashMap {
 
     }
     public static void hmset(){
-        Map<String,String> param = new HashMap<String, String>();
-        param.put("t1","1");
-        param.put("t2","2");
-        String rs = jedis.hmset("test1", param);
-        System.out.println(rs);
-        Long rs1 = jedis.hincrBy("test1","t1",10L);
-        System.out.println(rs1);
-        List<String> rs2 = jedis.hmget("test1","t1");
-        System.out.println(rs2.get(0));
+//        Map<String,String> param = new HashMap<String, String>();
+        String msg = "00000000000000000000000000000000000000000000000000";
+
+
+        System.out.println(msg);
+        for(int i=0;i<600000;i++){
+            jedis.hset("hello","t"+i,msg);
+        }
+//        String rs = jedis.hmset("test1", param);
+//        System.out.println(rs);
+//        Long rs1 = jedis.hincrBy("test1","t1",10L);
+//        System.out.println(rs1);
+//        List<String> rs2 = jedis.hmget("test1","t1");
+//        System.out.println(rs2.get(0));
     }
 }
